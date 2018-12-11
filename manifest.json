@@ -1,0 +1,26 @@
+{
+  "short_name": "Restaurant",
+  "name": "Restaurant Reviewer App",
+  "icons": [
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/icons-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/images/icons-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": "../index.html",
+  "background_color": "#fdfdfd",
+  "display": "standalone",
+  "scope": "../",
+  "theme_color": "#115e9b"
+}

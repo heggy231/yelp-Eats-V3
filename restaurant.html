@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#115e9b"/>
+  <!-- Normalize.css for better cross-browser consistency -->
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <!-- Main CSS file -->
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <title>Restaurant Info</title>
+</head>
+
+<body class="inside">
+  <!-- Beginning header -->
+  <header>
+    <!-- Beginning nav -->
+    <nav>
+      <h1><a href="index.html">Restaurant Reviews</a></h1>
+    </nav>
+
+    <!-- End nav -->
+  </header>
+  <!-- End header -->
+
+  <!-- Beginning main -->
+  <main id="maincontent">
+    <!-- Beginning breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ul id="breadcrumb" class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+    <!-- End breadcrumb -->
+    <!-- Beginning map -->
+    <section id="map-container">
+      <div id="map" role="application"></div>
+    </section>
+    <!-- End map -->
+    <!-- Beginning restaurant -->
+    <section id="restaurant-container">
+      <!-- getting value on the restaurant_info.js server inside  -->
+      <button onclick="setFavorite();" id="favorite-button"> </button>
+      <h1 id="restaurant-name"></h1>
+      <img id="restaurant-img">
+      <p id="restaurant-cuisine"></p>
+      <p id="restaurant-address"></p>
+      <table id="restaurant-hours"></table>
+    </section>
+    <!-- end restaurant -->
+    <!-- Beginning reviews -->
+    <section id="reviews-container">
+      <ul id="reviews-list"></ul>
+    </section>
+    <!-- End reviews -->
+    <button id="add-newReviewButton" class="add-newReviewButton">Add Review</button>
+    
+    <div class="modal-wrapper" id="review-formModal">
+    <!-- "Thank you, your review has been submitted!" message will be dynamically inserted here by DBHelper.postReview() -->
+      <div class="modal">
+          <!-- Add the review form to restaurant detail page -->
+          <!-- Rating choose black triangle https://stackoverflow.com/questions/6041209/html-character-codes-for-this-or-this -->
+          <!-- close x button for modal for reviews form -->
+          <span class="close" id="close-reviewsForm">&times;</span>
+          <h1 id="restaurant-reviewFormHeading">Please submit your review</h1>
+          <form method="POST" id="reviews-form" onsubmit="return addReview();">
+        <!-- for="idname" is for screen reader a11y matches the input id="idname" 
+        remember to do this for every input! for a11y-->
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" placeholder="e.g. John Doe"><br>
+  
+            <label for="review-comments" class="review-comments">Comments</label>
+            <textarea name="review-comments" id="review-comments" placeholder="Enter comments"></textarea><br>
+  
+            <label for="review-rating">Rating:</label>
+            <select role="checkbox" name="review-rating" id="review-rating">1
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select><br>
+            <div class="buttons-container">
+                <button type="submit" value="Submit">Submit</button>
+                
+                <button type="reset" value="Reset" id="reviews-formReset">Reset</button>
+            </div>
+          </form>
+      </div>
+    </div> <!-- close modal-wrapper -->
+      <!-- Beginning footer -->
+    <footer id="footer">
+      Copyright (c) 2017 <a href="index.html"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    </footer>
+    <!-- End footer -->
+
+
+  </main>
+  <!-- End main -->
+
+
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <!-- Beginning scripts -->
+  <!-- adding idb -->
+  <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
+  <!-- Database helpers -->
+  <script type="text/javascript" src="js/dbhelper.js"></script>
+  <!-- Main javascript file -->
+  <script type="text/javascript" src="js/restaurant_info.js"></script>
+  <!-- Google Maps -->
+ <!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_tKbW6A5pQ-eupxI56myUnHLqYCzOjKo&libraries=places&callback=initMap"></script> -->
+  <!-- End scripts -->
+
+</body>
+
+</html>
