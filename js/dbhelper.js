@@ -57,7 +57,7 @@ class DBHelper {
 
   // Getting reviews by restaurant_id
   static reviewsByID(restaurantID, callback) {
-    fetch(`http://localhost:1337/reviews/?restaurant_id=${restaurantID}`)
+    fetch(`https://restaurantreviewp3.herokuapp.com/reviews/?restaurant_id=${restaurantID}`)
       .then(response => response.json())
       .then((fetchedReview) => {
         console.log('reviews from fetch');
@@ -68,7 +68,7 @@ class DBHelper {
   // add my review of restaurant from form and send to database so it persists
   static addReview(review, callback) {
 
-    fetch('http://localhost:1337/reviews/', {
+    fetch('https://restaurantreviewp3.herokuapp.com/reviews/', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -237,7 +237,7 @@ class DBHelper {
   // my favorite function that has 3 parameters 
   static updateFavorite(id, favoriteState, callback) {
     // fetching from my backend server looking for restaurant id
-    fetch(`http://localhost:1337/restaurants/${id}/`, {
+    fetch(`https://restaurantreviewp3.herokuapp.com/restaurants/${id}/`, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
